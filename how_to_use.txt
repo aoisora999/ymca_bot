@@ -1,0 +1,40 @@
+to check disk
+
+df -h
+-------------------
+
+to mount disk
+
+lsblk
+sudo mkdir /mnt/external_hdd
+sudo mount /dev/sdb1 /mnt/external_hdd
+---------------------
+
+to cd disk
+
+df -h
+cd /mnt/external_hdd
+-------------------
+
+to copy directory
+
+cd /mnt/external_hdd
+cp -r <directory_name> /home/your-username/
+------------------
+
+to change name
+
+mv yami ivr_uploader
+------------------
+
+to run docker img
+
+# Navigate to your home directory
+cd /home/yami
+
+# Build the Docker image
+docker build -t mybot:latest .
+
+# Run the container with volume mapping
+docker run -d --name mybot --restart always -v $(pwd)/ivr_uploader:/app/ivr_uploader mybot:latest
+
