@@ -1,7 +1,7 @@
 Install ffmpeg with this commands
 
 sudo apt-get update
-sudo apt-get install ffmpeg
+sudo apt-get install ffmpeg -y
 
 ---------------------------------------
 
@@ -13,7 +13,7 @@ sudo apt-get install python3-pip
 
 install docker with this command
 
-sudo apt install docker.io
+sudo apt install docker.io -y
 
 ----------------------------------------
 
