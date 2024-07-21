@@ -29,12 +29,21 @@ mv yami ivr_uploader
 
 to run docker img
 
-# Navigate to your home directory
-cd /home/yami
+# Navigate to the bot directory
+cd /home/yami/ymca_bot
+
 
 # Build the Docker image
 docker build -t mybot:latest .
 
 # Run the container with volume mapping
-docker run -d --name mybot --restart always -v $(pwd)/ivr_uploader:/app/ivr_uploader mybot:latest
+docker run -d --name mybot --restart always -v /home/yami/ivr_uploader:/app/ivr_uploader mybot:latest
+--------------------------
+
+how to stop and delete docker image
+
+docker stop mybot
+docker rm mybot
+docker rmi mybot:latest
+-------------------------
 
