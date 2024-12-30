@@ -25,7 +25,7 @@ async def download_video(client: Client, chat_id: int, message: types.Message):
         await sent_message.edit_text(f"<b>Video downloaded successfully to {download_path}</b>")
         await asyncio.sleep(1)
         await sent_message.delete()
-        await video.delete()
+        await message.delete()
 
         video_path = download_path
         caption = os.path.basename(video_path)
