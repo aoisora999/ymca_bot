@@ -12,7 +12,7 @@ async def download_video(client: Client, chat_id: int, message: types.Message):
     if message.video:
         video = message.video
         video_caption = message.caption or "No caption"
-        download_path = os.path.join(DOWNLOAD_DIR, video_caption + ".mp4")
+        download_path = os.path.join(DOWNLOAD_DIR, video_caption)
 
         sent_message = await message.reply_text(f"<b>Downloading video to {download_path}...</b>")
         start_time = time.time()
@@ -42,7 +42,10 @@ async def download_video(client: Client, chat_id: int, message: types.Message):
                     pass
             sent_message = await message.reply_text('<b>Starting to Upload...</b>')
             
+            disclaimer = "Disclaimer: The Videos and audio contents are not owned or created by us. The original creators and studio retain all rights to the videos and audio contents. We are solely responsible for encoding the video with Myanmar subtitles."
+            
             with open(video_path, "rb") as video_file:
+                # Here's where you make the caption bold and add the disclaimer
                 await client.send_video(
                     chat_id,
                     video_file,
@@ -52,7 +55,7 @@ async def download_video(client: Client, chat_id: int, message: types.Message):
                     thumb=thumb_path,
                     supports_streaming=True,
                     disable_notification=True,
-                    caption=caption if caption != "No caption.mp4" else None
+                    caption=f"<b>{caption if caption != 'No caption.mp4' else 'No caption'}\n\n{disclaimer}</b>"
                 )
             await sent_message.delete()
             await asyncio.sleep(3)
